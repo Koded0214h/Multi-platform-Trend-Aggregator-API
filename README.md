@@ -1,0 +1,1 @@
+# Multi-platform-Trend-Aggregator-API
