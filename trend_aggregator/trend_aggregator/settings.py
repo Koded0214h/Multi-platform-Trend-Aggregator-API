@@ -10,7 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,6 +36,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'rest_framework',
+    "drf_spectacular",
+    "drf_spectacular_sidecar",
+    
     'trends',
     
     'django.contrib.admin',
@@ -53,6 +60,18 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'trend_aggregator.urls'
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Multi-Platform Trend Aggregator API",
+    "DESCRIPTION": "API that aggregates trending content from YouTube, Reddit, Google Trends, and more.",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,  # hide raw schema endpoint in Swagger
+}
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
 
 TEMPLATES = [
     {
@@ -124,3 +143,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# API Keys:
+REDDIT_SECRET_KEY=os.getenv("REDIT_SECRET_KEY")
+REDDIT_CLIENT_ID=os.getenv("REDDIT_CLIENT_ID")
+YT_API_KEY=os.getenv("YT_API_KEY")
