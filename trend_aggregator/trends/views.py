@@ -8,8 +8,21 @@ from .services.googleTrends import fetch_google_trends
 
 class TrendsAPIView(APIView):
     def get(self, request):
-        reddit = fetch_reddit_trends()
-        youtube = fetch_youtube_trends()
-        google = fetch_google_trends()
-        data = reddit + youtube + google
+        platform = request.query_params.get("platform")  # e.g., "reddit"
+        limit = int(request.query_params.get("limit", 10))  # default = 10
+
+        data = []
+
+        if platform in [None, "reddit"]:
+            reddit = fetch_reddit_trends()[:limit]
+            data.extend(reddit)
+
+        if platform in [None, "youtube"]:
+            youtube = fetch_youtube_trends()[:limit]
+            data.extend(youtube)
+
+        if platform in [None, "google"]:
+            google = fetch_google_trends()[:limit]
+            data.extend(google)
+
         return Response({"results": data})
