@@ -1,8 +1,14 @@
+import os
 import requests
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
+from dotenv import load_dotenv
 
-TOKEN = "7682580304:AAG5oHhpewxltvPiin_iyNTAci4qmIVXstI"
+load_dotenv()
+
+TOKEN = os.getenv("TELEGRAM_API_TOKEN")
+
+
 API_URL = "http://127.0.0.1:8000/api/v1/trends/"
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
