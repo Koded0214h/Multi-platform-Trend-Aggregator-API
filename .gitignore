@@ -1,3 +1,7 @@
 env/
 
 trend_aggregator/.env
+
+telegram/.env
+
+**/.env
