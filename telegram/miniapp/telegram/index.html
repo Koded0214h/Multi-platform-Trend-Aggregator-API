@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Telegram Mini App</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+    button {
+      background: #0088cc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello from Mini App 🚀</h1>
+  <p>This is a test mini app running inside Telegram.</p>
+
+  <button onclick="sendData()">Send Data to Bot</button>
+
+  <script>
+    function sendData() {
+      Telegram.WebApp.sendData("User clicked the button ✅");
+    }
+  </script>
+</body>
+</html>

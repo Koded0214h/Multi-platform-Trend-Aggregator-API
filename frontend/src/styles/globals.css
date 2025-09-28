@@ -1,0 +1,27 @@
+/* src/styles/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradient-border-bottom {
+  position: relative;
+}
+
+.gradient-border-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, #0f2323, #06f9f9, #0f2323);
+}
+
+.dark .gradient-border-bottom::after {
+  background: linear-gradient(to right, #0f2323, #06f9f9, #0f2323);
+}
+
+html.light .gradient-border-bottom::after {
+  background: linear-gradient(to right, #f5f8f8, #06f9f9, #f5f8f8);
+}

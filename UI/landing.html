@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Multi-platform Trend Aggregator</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#06f9f9",
+              "background-light": "#f5f8f8",
+              "background-dark": "#0f2323",
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+      .gradient-border-bottom {
+        position: relative;
+      }
+      .gradient-border-bottom::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(to right, #0f2323, #06f9f9, #0f2323);
+      }
+      .dark .gradient-border-bottom::after {
+        background: linear-gradient(to right, #0f2323, #06f9f9, #0f2323);
+      }
+      html.light .gradient-border-bottom::after {
+        background: linear-gradient(to right, #f5f8f8, #06f9f9, #f5f8f8);
+      }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="flex min-h-screen w-full flex-col">
+<header class="sticky top-0 z-50 w-full border-b border-primary/20 bg-background-light/80 px-4 py-3 backdrop-blur-sm dark:bg-background-dark/80 sm:px-6 lg:px-8">
+<div class="mx-auto flex max-w-7xl items-center justify-between">
+<a class="flex items-center gap-2" href="#">
+<svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z" fill="currentColor"></path></svg>
+<h1 class="text-lg font-bold text-gray-900 dark:text-white">Multi-platform Trend Aggregator</h1>
+</a>
+<nav class="hidden items-center gap-6 md:flex">
+<a class="text-sm font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary" href="#">Docs</a>
+<a class="text-sm font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary" href="#">API</a>
+<a class="text-sm font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary" href="#">Examples</a>
+<a class="text-sm font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary" href="#">Community</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="rounded bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary/20 dark:bg-primary/20 dark:hover:bg-primary/30">
+              Sign In
+            </button>
+<button class="rounded bg-primary px-4 py-2 text-sm font-bold text-background-dark shadow-lg shadow-primary/20 transition-transform hover:scale-105">
+              Get Started
+            </button>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<section class="relative py-20 sm:py-28 lg:py-32">
+<div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+<div class="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-8">
+<div class="flex flex-col items-start gap-8">
+<h1 class="text-4xl font-bold tracking-tighter text-gray-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl">
+                Unify trends. Amplify insights.
+              </h1>
+<p class="max-w-xl text-lg text-gray-600 dark:text-gray-300">
+                Aggregate real-time data from diverse platforms into a single, powerful API. Track trends, analyze data, and build innovative applications with ease.
+              </p>
+<div class="flex flex-wrap gap-4">
+<button class="flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-base font-bold text-background-dark shadow-lg shadow-primary/30 transition-transform hover:scale-105">
+                  Start Building for Free
+                </button>
+<button class="flex items-center justify-center rounded-lg border border-primary/30 bg-primary/10 px-6 py-3 text-base font-semibold text-primary transition-colors hover:bg-primary/20 dark:bg-primary/20 dark:hover:bg-primary/30">
+                  Explore Documentation
+                </button>
+</div>
+</div>
+<div class="relative h-full min-h-[400px] rounded-xl border border-primary/20 bg-background-light/50 p-4 shadow-2xl shadow-primary/10 dark:bg-background-dark/50">
+<div class="absolute inset-x-4 top-4 flex items-center gap-2">
+<span class="h-3 w-3 rounded-full bg-red-400"></span>
+<span class="h-3 w-3 rounded-full bg-yellow-400"></span>
+<span class="h-3 w-3 rounded-full bg-green-400"></span>
+</div>
+<div class="mt-8 h-full w-full overflow-hidden rounded-lg bg-background-light/50 p-4 dark:bg-background-dark/50">
+<code class="text-xs text-gray-500 dark:text-gray-400">
+<pre><span class="text-purple-400">import</span> TrendAggregator <span class="text-purple-400">from</span> <span class="text-green-400">'@mta/sdk'</span>;
+<span class="text-purple-400">const</span> client = <span class="text-blue-400">new</span> <span class="text-yellow-300">TrendAggregator</span>({
+  apiKey: <span class="text-green-400">'YOUR_API_KEY'</span>,
+});
+<span class="text-purple-400">async function</span> <span class="text-yellow-300">getSocialTrends</span>() {
+  <span class="text-purple-400">const</span> trends = <span class="text-purple-400">await</span> client.<span class="text-yellow-300">get</span>({
+    platforms: [<span class="text-green-400">'twitter'</span>, <span class="text-green-400">'reddit'</span>],
+    limit: <span class="text-orange-400">10</span>,
+  });
+  console.<span class="text-yellow-300">log</span>(trends);
+}
+<span class="text-yellow-300">getSocialTrends</span>();
+                  </pre>
+</code>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 sm:py-28 lg:py-32">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="mx-auto max-w-3xl text-center">
+<h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">Unlock the Power of Unified Trend Data</h2>
+<p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                Our aggregator provides a comprehensive solution for developers to access and analyze trending topics across multiple platforms seamlessly.
+              </p>
+</div>
+<div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+<div class="rounded-xl border border-primary/20 bg-background-light/50 p-6 dark:bg-background-dark/50">
+<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/20 text-primary">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M232,208a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V48a8,8,0,0,1,16,0v94.37L90.73,98a8,8,0,0,1,10.07-.38l58.81,44.11L218.73,90a8,8,0,1,1,10.54,12l-64,56a8,8,0,0,1-10.07.38L96.39,114.29,40,163.63V200H224A8,8,0,0,1,232,208Z"></path></svg>
+</div>
+<h3 class="mt-4 text-lg font-bold text-gray-900 dark:text-white">Real-time Tracking</h3>
+<p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Stay ahead with up-to-the-minute trend data from diverse sources.</p>
+</div>
+<div class="rounded-xl border border-primary/20 bg-background-light/50 p-6 dark:bg-background-dark/50">
+<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/20 text-primary">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"></path></svg>
+</div>
+<h3 class="mt-4 text-lg font-bold text-gray-900 dark:text-white">Developer-Friendly API</h3>
+<p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Integrate seamlessly using our intuitive and well-documented API.</p>
+</div>
+<div class="rounded-xl border border-primary/20 bg-background-light/50 p-6 dark:bg-background-dark/50">
+<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/20 text-primary">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM101.63,168h52.74C149,186.34,140,202.87,128,215.89,116,202.87,107,186.34,101.63,168ZM98,152a145.72,145.72,0,0,1,0-48h60a145.72,145.72,0,0,1,0,48ZM40,128a87.61,87.61,0,0,1,3.33-24H81.79a161.79,161.79,0,0,0,0,48H43.33A87.61,87.61,0,0,1,40,128ZM154.37,88H101.63C107,69.66,116,53.13,128,40.11,140,53.13,149,69.66,154.37,88Zm19.84,16h38.46a88.15,88.15,0,0,1,0,48H174.21a161.79,161.79,0,0,0,0-48Zm32.16-16H170.94a142.39,142.39,0,0,0-20.26-45A88.37,88.37,0,0,1,206.37,88ZM105.32,43A142.39,142.39,0,0,0,85.06,88H49.63A88.37,88.37,0,0,1,105.32,43ZM49.63,168H85.06a142.39,142.39,0,0,0,20.26,45A88.37,88.37,0,0,1,49.63,168Zm101.05,45a142.39,142.39,0,0,0,20.26-45h35.43A88.37,88.37,0,0,1,150.68,213Z"></path></svg>
+</div>
+<h3 class="mt-4 text-lg font-bold text-gray-900 dark:text-white">Global Coverage</h3>
+<p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Access trends from social media, news, and search engines worldwide.</p>
+</div>
+<div class="rounded-xl border border-primary/20 bg-background-light/50 p-6 dark:bg-background-dark/50">
+<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/20 text-primary">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M208,40H48A16,16,0,0,0,32,56v58.78c0,89.61,75.82,119.34,91,124.39a15.53,15.53,0,0,0,10,0c15.2-5.05,91-34.78,91-124.39V56A16,16,0,0,0,208,40Zm0,74.79c0,78.42-66.35,104.62-80,109.18-13.53-4.51-80-30.69-80-109.18V56H208ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.68l50.34-50.34a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"></path></svg>
+</div>
+<h3 class="mt-4 text-lg font-bold text-gray-900 dark:text-white">Secure and Reliable</h3>
+<p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Trust our robust infrastructure to deliver accurate and timely data.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 sm:py-28 lg:py-32">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="mx-auto max-w-3xl text-center">
+<h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">Use Cases</h2>
+<p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                Discover how different professionals leverage our API to gain a competitive edge.
+              </p>
+</div>
+<div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+<div class="rounded-xl border border-primary/20 bg-background-dark/50 p-6 shadow-lg shadow-primary/10">
+<h3 class="text-lg font-bold text-primary">For Market Researchers</h3>
+<p class="mt-2 text-gray-300">Identify emerging consumer trends and shifts in market sentiment by analyzing data from social media and news sources in real-time.</p>
+</div>
+<div class="rounded-xl border border-primary/20 bg-background-dark/50 p-6 shadow-lg shadow-primary/10">
+<h3 class="text-lg font-bold text-primary">For Financial Analysts</h3>
+<p class="mt-2 text-gray-300">Track stock market-related keywords and public sentiment to inform investment strategies and predict market movements.</p>
+</div>
+<div class="rounded-xl border border-primary/20 bg-background-dark/50 p-6 shadow-lg shadow-primary/10">
+<h3 class="text-lg font-bold text-primary">For Content Creators</h3>
+<p class="mt-2 text-gray-300">Discover viral topics and trending hashtags to create relevant and timely content that resonates with your audience.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 sm:py-28 lg:py-32">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="mx-auto max-w-3xl text-center">
+<h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">Frequently Asked Questions</h2>
+<p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                Have questions? We've got answers. If you can't find what you're looking for, feel free to contact us.
+              </p>
+</div>
+<div class="mt-16 mx-auto max-w-4xl space-y-4">
+<details class="group rounded-lg border border-primary/20 bg-background-dark/50 p-6 [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex cursor-pointer items-center justify-between">
+<h3 class="text-lg font-medium text-gray-100">What platforms do you support?</h3>
+<span class="relative h-5 w-5">
+<svg class="absolute h-5 w-5 opacity-100 transition-opacity group-open:opacity-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 6v12M6 12h12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<svg class="absolute h-5 w-5 opacity-0 transition-opacity group-open:opacity-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 12H6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</span>
+</summary>
+<p class="mt-4 text-gray-300">Our API currently supports Twitter, Reddit, Google Trends, and major news outlets. We are continuously working on adding more platforms based on user demand.</p>
+</details>
+<details class="group rounded-lg border border-primary/20 bg-background-dark/50 p-6 [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex cursor-pointer items-center justify-between">
+<h3 class="text-lg font-medium text-gray-100">How up-to-date is the data?</h3>
+<span class="relative h-5 w-5">
+<svg class="absolute h-5 w-5 opacity-100 transition-opacity group-open:opacity-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 6v12M6 12h12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<svg class="absolute h-5 w-5 opacity-0 transition-opacity group-open:opacity-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 12H6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</span>
+</summary>
+<p class="mt-4 text-gray-300">We aim for real-time data aggregation. Depending on the source platform, data is refreshed anywhere from every few minutes to every hour.</p>
+</details>
+<details class="group rounded-lg border border-primary/20 bg-background-dark/50 p-6 [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex cursor-pointer items-center justify-between">
+<h3 class="text-lg font-medium text-gray-100">What are the rate limits for the API?</h3>
+<span class="relative h-5 w-5">
+<svg class="absolute h-5 w-5 opacity-100 transition-opacity group-open:opacity-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 6v12M6 12h12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<svg class="absolute h-5 w-5 opacity-0 transition-opacity group-open:opacity-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 12H6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</span>
+</summary>
+<p class="mt-4 text-gray-300">For the Free tier, you can make up to 100 requests per day. The upcoming Pro tier will offer significantly higher rate limits and dedicated support.</p>
+</details>
+</div>
+</div>
+</section>
+<section class="py-20 sm:py-28 lg:py-32">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="mx-auto max-w-3xl text-center">
+<h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">Pricing Plans</h2>
+<p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                Choose a plan that fits your needs. Start for free and scale as you grow.
+              </p>
+</div>
+<div class="mt-16 overflow-x-auto">
+<table class="w-full max-w-4xl mx-auto border-collapse text-left">
+<thead>
+<tr class="border-b border-primary/20">
+<th class="p-4 text-lg font-bold text-white">Feature</th>
+<th class="p-4 text-lg font-bold text-white text-center">Free (v1)</th>
+<th class="p-4 text-lg font-bold text-white text-center">Pro (v2)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-primary/20">
+<td class="p-4 text-gray-300">API Requests</td>
+<td class="p-4 text-gray-300 text-center">100/day</td>
+<td class="p-4 text-center">
+<span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold text-primary">Coming Soon</span>
+</td>
+</tr>
+<tr class="border-b border-primary/20">
+<td class="p-4 text-gray-300">Supported Platforms</td>
+<td class="p-4 text-gray-300 text-center">Core platforms</td>
+<td class="p-4 text-center">
+<span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold text-primary">Coming Soon</span>
+</td>
+</tr>
+<tr class="border-b border-primary/20">
+<td class="p-4 text-gray-300">Advanced Analytics</td>
+<td class="p-4 text-gray-300 text-center">
+<svg class="mx-auto h-6 w-6 text-red-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</td>
+<td class="p-4 text-center">
+<span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold text-primary">Coming Soon</span>
+</td>
+</tr>
+<tr>
+<td class="p-4 text-gray-300">Support</td>
+<td class="p-4 text-gray-300 text-center">Community</td>
+<td class="p-4 text-center">
+<span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold text-primary">Coming Soon</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section class="gradient-border-bottom relative py-20 sm:py-28 lg:py-32">
+<div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+<h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">Ready to Get Started?</h2>
+<p class="mx-auto mt-4 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
+              Explore the documentation and start building with the most powerful trend aggregation API available.
+            </p>
+<div class="mt-8">
+<button class="rounded-lg bg-primary px-8 py-4 text-lg font-bold text-background-dark shadow-lg shadow-primary/30 transition-transform hover:scale-105">
+                Explore the Docs
+              </button>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-background-light dark:bg-background-dark">
+<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+<div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+<a class="text-sm text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary" href="#">Docs</a>
+<a class="text-sm text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary" href="#">API</a>
+<a class="text-sm text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary" href="#">Examples</a>
+<a class="text-sm text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary" href="#">Community</a>
+<a class="text-sm text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary" href="#">Terms of Service</a>
+<a class="text-sm text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary" href="#">Privacy Policy</a>
+</div>
+<p class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">© 2024 Multi-platform Trend Aggregator. All rights reserved.</p>
+</div>
+</footer>
+</div>
+</body></html>
