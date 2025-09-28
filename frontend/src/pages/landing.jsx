@@ -4,7 +4,7 @@ import Header from '../components/Header.jsx';
 import Hero from '../components/Landing/Hero.jsx';
 import Features from '../components/Landing/Features.jsx';
 import UseCases from '../components/Landing/UseCases.jsx';
-import FAQ from '../components/FAQ.JSX';
+import FAQ from '../components/FAQ.jsx';
 import Pricing from '../components/Pricing.jsx';
 import CTA from '../components/Landing/CTA.jsx';
 import Footer from '../components/Footer.jsx';

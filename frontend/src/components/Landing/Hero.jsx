@@ -15,9 +15,9 @@ const client = new TrendAggregator({
 async function getSocialTrends() {
   const trends = await client.get({
     platforms: ['twitter', 'reddit'],
-    limit: 10,
-  });
-  console.log(trends);
+   limit: 10,
+ });
+ console.log(trends);
 }
 
 getSocialTrends();`,
@@ -30,10 +30,10 @@ client = TrendAggregator(api_key='YOUR_API_KEY')
 
 async def get_social_trends():
     trends = await client.get(
-        platforms=['twitter', 'reddit'],
-        limit=10
+      platforms=['twitter', 'reddit'],
+      limit=10
     )
-    print(trends)
+   print(trends)
 
 get_social_trends()`,
       language: 'python'
