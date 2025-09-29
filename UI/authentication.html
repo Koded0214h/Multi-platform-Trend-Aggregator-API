@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch Design</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1dc9c9",
+              "background-light": "#f6f8f8",
+              "background-dark": "#112121",
+            },
+            fontFamily: {
+              display: ["Space Grotesk"],
+            },
+            borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+          },
+        },
+      };
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-300">
+<div class="flex min-h-screen">
+<aside class="w-80 flex-shrink-0 bg-background-light dark:bg-background-dark p-6 border-r border-gray-200 dark:border-gray-800">
+<div class="flex flex-col h-full">
+<h1 class="text-xl font-bold text-gray-900 dark:text-white mb-8">Multi-platform Trend Aggregator</h1>
+<nav class="flex flex-col space-y-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-gray-700 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M218.83,103.77l-80-75.48a1.14,1.14,0,0,1-.11-.11,16,16,0,0,0-21.53,0l-.11.11L37.17,103.77A16,16,0,0,0,32,115.55V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V160h32v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V115.55A16,16,0,0,0,218.83,103.77ZM208,208H160V160a16,16,0,0,0-16-16H112a16,16,0,0,0-16,16v48H48V115.55l.11-.1L128,40l79.9,75.43.11.1Z"></path>
+</svg>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded bg-primary/20 text-primary" href="#">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M160,16A80.07,80.07,0,0,0,83.91,120.78L26.34,178.34A8,8,0,0,0,24,184v40a8,8,0,0,0,8,8H72a8,8,0,0,0,8-8V208H96a8,8,0,0,0,8-8V184h16a8,8,0,0,0,5.66-2.34l9.56-9.57A80,80,0,1,0,160,16Zm20,76a16,16,0,1,1,16-16A16,16,0,0,1,180,92Z"></path>
+</svg>
+<span class="text-sm font-medium">Authentication</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-gray-700 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"></path>
+</svg>
+<span class="text-sm font-medium">API Reference</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-gray-700 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M220.27,158.54a8,8,0,0,0-7.7-.46,20,20,0,1,1,0-36.16A8,8,0,0,0,224,114.69V72a16,16,0,0,0-16-16H171.78a35.36,35.36,0,0,0,.22-4,36.11,36.11,0,0,0-11.36-26.24,36,36,0,0,0-60.55,23.62,36.56,36.56,0,0,0,.14,6.62H64A16,16,0,0,0,48,72v32.22a35.36,35.36,0,0,0-4-.22,36.12,36.12,0,0,0-26.24,11.36,35.7,35.7,0,0,0-9.69,27,36.08,36.08,0,0,0,33.31,33.6,35.68,35.68,0,0,0,6.62-.14V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V165.31A8,8,0,0,0,220.27,158.54ZM208,208H64V165.31a8,8,0,0,0-11.43-7.23,20,20,0,1,1,0-36.16A8,8,0,0,0,64,114.69V72h46.69a8,8,0,0,0,7.23-11.43,20,20,0,1,1,36.16,0A8,8,0,0,0,161.31,72H208v32.23a35.68,35.68,0,0,0-6.62-.14A36,36,0,0,0,204,176a35.36,35.36,0,0,0,4-.22Z"></path>
+</svg>
+<span class="text-sm font-medium">SDKs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-gray-700 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M140,180a12,12,0,1,1-12-12A12,12,0,0,1,140,180ZM128,72c-22.06,0-40,16.15-40,36v4a8,8,0,0,0,16,0v-4c0-11,10.77-20,24-20s24,9,24,20-10.77,20-24,20a8,8,0,0,0-8,8v8a8,8,0,0,0,16,0v-.72c18.24-3.35,32-17.9,32-35.28C168,88.15,150.06,72,128,72Zm104,56A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path>
+</svg>
+<span class="text-sm font-medium">Support</span>
+</a>
+</nav>
+</div>
+</aside>
+<main class="flex-1 p-8 md:p-12 overflow-y-auto">
+<div class="max-w-4xl mx-auto">
+<div class="prose prose-invert dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
+<h1 class="text-4xl font-bold text-gray-900 dark:text-white">Authentication</h1>
+<p class="text-lg mt-4">
+              To access the Multi-platform Trend Aggregator API, you need to authenticate your requests. We support API key authentication, which allows you to securely access the
+              API using a unique key associated with your account.
+            </p>
+<h2 class="text-2xl font-bold mt-12 text-gray-900 dark:text-white">API Key Authentication</h2>
+<p>
+              API key authentication is the primary method for accessing the Multi-platform Trend Aggregator API. Each user is assigned a unique API key, which must be included in
+              the headers of every request. This key identifies your application and grants access to the API's resources.
+            </p>
+<h3 class="text-xl font-bold mt-8 text-gray-900 dark:text-white">Obtaining an API Key</h3>
+<p>
+              To obtain an API key, you must first create an account on the Multi-platform Trend Aggregator platform. Once your account is set up, you can generate an API key from
+              your account dashboard. This key is unique to your account and should be kept confidential.
+            </p>
+<h3 class="text-xl font-bold mt-8 text-gray-900 dark:text-white">Using the API Key</h3>
+<p>
+              To use your API key, include it in the <code class="bg-gray-200 dark:bg-gray-700 text-primary rounded px-1 py-0.5">'Authorization'</code> header of your HTTP requests. The header should follow the format: <code class="bg-gray-200 dark:bg-gray-700 text-primary rounded px-1 py-0.5">'Authorization: Bearer YOUR_API_KEY'</code>, where
+              <code class="bg-gray-200 dark:bg-gray-700 text-primary rounded px-1 py-0.5">'YOUR_API_KEY'</code> is your actual API key.
+            </p>
+<h3 class="text-xl font-bold mt-8 text-gray-900 dark:text-white">Example Request (Python)</h3>
+<p>Here's an example of how to include the API key in a request using Python's 'requests' library:</p>
+<div class="bg-gray-900 rounded-lg p-4 my-4">
+<pre><code class="language-python text-sm text-white">import requests
+api_key = 'YOUR_API_KEY'
+url = 'https://api.trendaggregator.com/v1/trends'
+headers = {
+    'Authorization': f'Bearer {api_key}'
+}
+response = requests.get(url, headers=headers)
+if response.status_code == 200:
+    print(response.json())
+else:
+    print(f'Error: {response.status_code}')</code></pre>
+</div>
+<h3 class="text-xl font-bold mt-8 text-gray-900 dark:text-white">Security Considerations</h3>
+<p>
+              Keep your API key secure and do not expose it in client-side code or public repositories. If you suspect your API key has been compromised, regenerate it immediately
+              from your account dashboard. For enhanced security, consider implementing server-side proxying to handle API requests and protect your API key from direct exposure.
+            </p>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

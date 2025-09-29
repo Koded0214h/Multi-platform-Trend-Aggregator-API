@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<title>Multi-platform Trend Aggregator - API Reference</title>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Space+Grotesk:wght@400;500;700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#1dc9c9",
+            "background-light": "#f6f8f8",
+            "background-dark": "#112121",
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-neutral-800 dark:text-neutral-200">
+<div class="flex min-h-screen">
+<aside class="w-80 flex-shrink-0 bg-background-light/50 dark:bg-background-dark/50 p-6 flex flex-col justify-between border-r border-neutral-200/10 dark:border-neutral-800/50">
+<div>
+<h1 class="text-xl font-bold text-neutral-900 dark:text-white mb-8">Multi-platform Trend Aggregator</h1>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-neutral-600 dark:text-neutral-400 hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-sm font-medium">Introduction</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-neutral-600 dark:text-neutral-400 hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">key</span>
+<span class="text-sm font-medium">Authentication</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">list</span>
+<span class="text-sm font-medium">Endpoints</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-neutral-600 dark:text-neutral-400 hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">timer</span>
+<span class="text-sm font-medium">Rate Limiting</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-neutral-600 dark:text-neutral-400 hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">code</span>
+<span class="text-sm font-medium">Examples</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-neutral-600 dark:text-neutral-400 hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">api</span>
+<span class="text-sm font-medium">API Reference</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 p-10 overflow-auto">
+<div class="max-w-4xl mx-auto">
+<header class="mb-12">
+<h2 class="text-4xl font-bold text-neutral-900 dark:text-white">Endpoints</h2>
+</header>
+<section class="mb-12">
+<div class="border-b border-neutral-200/10 dark:border-neutral-800/50 pb-4 mb-6">
+<h3 class="text-2xl font-bold text-neutral-900 dark:text-white">Trending Topics</h3>
+<p class="mt-2 text-neutral-600 dark:text-neutral-400">Retrieve the current trending topics across multiple platforms.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div>
+<div class="mb-6">
+<label class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2" for="endpoint-trending">Endpoint</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-xs font-bold text-green-500">GET</span>
+<input class="form-input w-full pl-14 pr-4 py-3 rounded-lg bg-neutral-200/30 dark:bg-neutral-900/50 border border-neutral-300 dark:border-neutral-700 focus:ring-primary focus:border-primary text-neutral-800 dark:text-neutral-200" id="endpoint-trending" readonly="" type="text" value="/api/v1/trends/topics"/>
+</div>
+</div>
+<div class="mb-6">
+<h4 class="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Parameters</h4>
+<div class="text-sm text-neutral-600 dark:text-neutral-400 p-4 border border-dashed border-neutral-300 dark:border-neutral-700 rounded-lg">No parameters required for this endpoint.</div>
+</div>
+</div>
+<div>
+<h4 class="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Example Response</h4>
+<div class="bg-neutral-200/30 dark:bg-neutral-900/50 p-4 rounded-lg text-sm overflow-x-auto">
+<pre class="text-neutral-800 dark:text-neutral-200"><code>{
+  "data": [
+    {
+      "topic": "#AIForGood",
+      "platform": "Twitter",
+      "volume": "1.2M"
+    },
+    {
+      "topic": "Sustainable Tech",
+      "platform": "Google",
+      "volume": "850k"
+    }
+  ]
+}</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="border-b border-neutral-200/10 dark:border-neutral-800/50 pb-4 mb-6">
+<h3 class="text-2xl font-bold text-neutral-900 dark:text-white">Search Trends</h3>
+<p class="mt-2 text-neutral-600 dark:text-neutral-400">Search for trends related to a specific keyword.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div>
+<div class="mb-6">
+<label class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2" for="endpoint-search">Endpoint</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-xs font-bold text-green-500">GET</span>
+<input class="form-input w-full pl-14 pr-4 py-3 rounded-lg bg-neutral-200/30 dark:bg-neutral-900/50 border border-neutral-300 dark:border-neutral-700 focus:ring-primary focus:border-primary text-neutral-800 dark:text-neutral-200" id="endpoint-search" readonly="" type="text" value="/api/v1/trends/search"/>
+</div>
+</div>
+<div class="mb-6">
+<h4 class="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Parameters</h4>
+<div class="space-y-4">
+<div>
+<code class="text-sm font-mono text-primary bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded">q</code>
+<span class="text-sm text-neutral-600 dark:text-neutral-400 ml-2">string, required</span>
+<p class="text-xs text-neutral-500 dark:text-neutral-500 mt-1">The keyword to search for.</p>
+</div>
+<div>
+<code class="text-sm font-mono text-primary bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded">platform</code>
+<span class="text-sm text-neutral-600 dark:text-neutral-400 ml-2">string</span>
+<p class="text-xs text-neutral-500 dark:text-neutral-500 mt-1">Filter by platform (e.g., 'twitter', 'google').</p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h4 class="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Example Response</h4>
+<div class="bg-neutral-200/30 dark:bg-neutral-900/50 p-4 rounded-lg text-sm overflow-x-auto">
+<pre class="text-neutral-800 dark:text-neutral-200"><code>{
+  "data": [
+    {
+      "topic": "Serverless Architecture",
+      "platform": "Google",
+      "relevance": "95%"
+    },
+    {
+      "topic": "#Serverless",
+      "platform": "Twitter",
+      "relevance": "89%"
+    }
+  ]
+}</code></pre>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+
+</body></html>

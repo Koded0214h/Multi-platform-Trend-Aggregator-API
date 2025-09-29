@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Multi-platform Trend Aggregator - Rate Limiting</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1dc9c9",
+              "background-light": "#f6f8f8",
+              "background-dark": "#112121",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk"]
+            },
+            borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+          },
+        },
+      }
+    </script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-black dark:text-white">
+<div class="flex min-h-screen">
+<aside class="w-80 flex-shrink-0 bg-background-light dark:bg-background-dark p-6 border-r border-black/10 dark:border-white/10">
+<div class="flex flex-col h-full">
+<h1 class="text-lg font-bold text-black dark:text-white mb-8">Multi-platform Trend Aggregator</h1>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-black/70 dark:text-white/70 hover:bg-black/5 dark:hover:bg-white/5 transition-colors" href="#">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M218.83,103.77l-80-75.48a1.14,1.14,0,0,1-.11-.11,16,16,0,0,0-21.53,0l-.11.11L37.17,103.77A16,16,0,0,0,32,115.55V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V160h32v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V115.55A16,16,0,0,0,218.83,103.77ZM208,208H160V160a16,16,0,0,0-16-16H112a16,16,0,0,0-16,16v48H48V115.55l.11-.1L128,40l79.9,75.43.11.1Z"></path>
+</svg>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-black/70 dark:text-white/70 hover:bg-black/5 dark:hover:bg-white/5 transition-colors" href="#">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"></path>
+</svg>
+<span class="text-sm font-medium">API Reference</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded bg-primary/20 dark:bg-primary/30 text-primary" href="#">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M224,128A96,96,0,0,1,62.11,197.82a8,8,0,1,1,11-11.64A80,80,0,1,0,71.43,71.43C67.9,75,64.58,78.51,61.35,82L77.66,98.34A8,8,0,0,1,72,112H32a8,8,0,0,1-8-8V64a8,8,0,0,1,13.66-5.66L50,70.7c3.22-3.49,6.54-7,10.06-10.55A96,96,0,0,1,224,128ZM128,72a8,8,0,0,0-8,8v48a8,8,0,0,0,3.88,6.86l40,24a8,8,0,1,0,8.24-13.72L136,123.47V80A8,8,0,0,0,128,72Z"></path>
+</svg>
+<span class="text-sm font-medium">Rate Limiting</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-black/70 dark:text-white/70 hover:bg-black/5 dark:hover:bg-white/5 transition-colors" href="#">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M160,16A80.07,80.07,0,0,0,83.91,120.78L26.34,178.34A8,8,0,0,0,24,184v40a8,8,0,0,0,8,8H72a8,8,0,0,0,8-8V208H96a8,8,0,0,0,8-8V184h16a8,8,0,0,0,5.66-2.34l9.56-9.57A80,80,0,1,0,160,16Zm0,144a63.7,63.7,0,0,1-23.65-4.51,8,8,0,0,0-8.84,1.68L116.69,168H96a8,8,0,0,0-8,8v16H72a8,8,0,0,0-8,8v16H40V187.31l58.83-58.82a8,8,0,0,0,1.68-8.84A64,64,0,1,1,160,160Zm32-84a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"></path>
+</svg>
+<span class="text-sm font-medium">Authentication</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-black/70 dark:text-white/70 hover:bg-black/5 dark:hover:bg-white/5 transition-colors" href="#">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M220.27,158.54a8,8,0,0,0-7.7-.46,20,20,0,1,1,0-36.16A8,8,0,0,0,224,114.69V72a16,16,0,0,0-16-16H171.78a35.36,35.36,0,0,0,.22-4,36.11,36.11,0,0,0-11.36-26.24,36,36,0,0,0-60.55,23.62,36.56,36.56,0,0,0,.14,6.62H64A16,16,0,0,0,48,72v32.22a35.36,35.36,0,0,0-4-.22,36.12,36.12,0,0,0-26.24,11.36,35.7,35.7,0,0,0-9.69,27,36.08,36.08,0,0,0,33.31,33.6,35.68,35.68,0,0,0,6.62-.14V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V165.31A8,8,0,0,0,220.27,158.54ZM208,208H64V165.31a8,8,0,0,0-11.43-7.23,20,20,0,1,1,0-36.16A8,8,0,0,0,64,114.69V72h46.69a8,8,0,0,0,7.23-11.43,20,20,0,1,1,36.16,0A8,8,0,0,0,161.31,72H208v32.23a35.68,35.68,0,0,0-6.62-.14A36,36,0,0,0,204,176a35.36,35.36,0,0,0,4-.22Z"></path>
+</svg>
+<span class="text-sm font-medium">SDKs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-black/70 dark:text-white/70 hover:bg-black/5 dark:hover:bg-white/5 transition-colors" href="#">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M140,180a12,12,0,1,1-12-12A12,12,0,0,1,140,180ZM128,72c-22.06,0-40,16.15-40,36v4a8,8,0,0,0,16,0v-4c0-11,10.77-20,24-20s24,9,24,20-10.77,20-24,20a8,8,0,0,0-8,8v8a8,8,0,0,0,16,0v-.72c18.24-3.35,32-17.9,32-35.28C168,88.15,150.06,72,128,72Zm104,56A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path>
+</svg>
+<span class="text-sm font-medium">Support</span>
+</a>
+</nav>
+</div>
+</aside>
+<main class="flex-1 p-10 overflow-auto">
+<div class="max-w-4xl mx-auto">
+<h1 class="text-4xl font-bold text-black dark:text-white mb-4">Rate Limiting</h1>
+<p class="text-black/70 dark:text-white/70 mb-8 leading-relaxed">
+            To ensure fair usage and prevent abuse, the Multi-platform Trend Aggregator API enforces rate limits. These limits restrict the number of requests a user or application can make within a specific time frame. Exceeding these limits will result in temporary suspension of access to the API.
+          </p>
+<div class="space-y-10">
+<div>
+<h2 class="text-2xl font-bold text-black dark:text-white mb-4">Understanding Rate Limits</h2>
+<p class="text-black/70 dark:text-white/70 mb-6 leading-relaxed">
+                Rate limits are calculated on a per-user or per-application basis. Each user or application has a specific quota of requests they can make within a given time window. The API uses a sliding window algorithm to track and enforce these limits.
+              </p>
+</div>
+<div>
+<h2 class="text-2xl font-bold text-black dark:text-white mb-4">Current Rate Limits</h2>
+<div class="border border-black/10 dark:border-white/10 rounded-lg">
+<div class="grid grid-cols-3 gap-6 p-4 border-b border-black/10 dark:border-white/10">
+<p class="text-black/70 dark:text-white/70 font-medium col-span-1">Limit</p>
+<p class="text-black dark:text-white font-medium col-span-2">Value</p>
+</div>
+<div class="grid grid-cols-3 gap-6 p-4 border-b border-black/10 dark:border-white/10">
+<p class="text-black/70 dark:text-white/70 col-span-1">Requests per minute</p>
+<p class="text-black dark:text-white col-span-2">100</p>
+</div>
+<div class="grid grid-cols-3 gap-6 p-4 border-b border-black/10 dark:border-white/10">
+<p class="text-black/70 dark:text-white/70 col-span-1">Requests per hour</p>
+<p class="text-black dark:text-white col-span-2">500</p>
+</div>
+<div class="grid grid-cols-3 gap-6 p-4">
+<p class="text-black/70 dark:text-white/70 col-span-1">Requests per day</p>
+<p class="text-black dark:text-white col-span-2">2000</p>
+</div>
+</div>
+</div>
+<div>
+<h2 class="text-2xl font-bold text-black dark:text-white mb-4">Handling Rate Limit Errors</h2>
+<p class="text-black/70 dark:text-white/70 mb-6 leading-relaxed">
+                When a rate limit is exceeded, the API will return an HTTP <code class="bg-black/10 dark:bg-white/10 px-2 py-1 rounded">429 Too Many Requests</code> error. The response will include the following headers:
+              </p>
+<div class="border border-black/10 dark:border-white/10 rounded-lg">
+<div class="grid grid-cols-3 gap-6 p-4 border-b border-black/10 dark:border-white/10">
+<p class="text-black/70 dark:text-white/70 font-medium col-span-1">Header</p>
+<p class="text-black dark:text-white font-medium col-span-2">Description</p>
+</div>
+<div class="grid grid-cols-3 gap-6 p-4 border-b border-black/10 dark:border-white/10">
+<p class="text-black/70 dark:text-white/70 col-span-1 font-mono text-sm">X-RateLimit-Limit</p>
+<p class="text-black dark:text-white col-span-2">The maximum number of requests allowed within the current time window.</p>
+</div>
+<div class="grid grid-cols-3 gap-6 p-4 border-b border-black/10 dark:border-white/10">
+<p class="text-black/70 dark:text-white/70 col-span-1 font-mono text-sm">X-RateLimit-Remaining</p>
+<p class="text-black dark:text-white col-span-2">The number of requests remaining in the current time window.</p>
+</div>
+<div class="grid grid-cols-3 gap-6 p-4">
+<p class="text-black/70 dark:text-white/70 col-span-1 font-mono text-sm">X-RateLimit-Reset</p>
+<p class="text-black dark:text-white col-span-2">The timestamp (in seconds since epoch) when the rate limit will reset.</p>
+</div>
+</div>
+</div>
+<div>
+<h2 class="text-2xl font-bold text-black dark:text-white mb-4">Best Practices</h2>
+<div class="space-y-4">
+<label class="flex items-start gap-3 cursor-pointer">
+<input class="mt-1 h-5 w-5 rounded border-black/30 dark:border-white/30 bg-transparent text-primary focus:ring-primary focus:ring-offset-background-light dark:focus:ring-offset-background-dark" type="checkbox"/>
+<span class="text-black/70 dark:text-white/70 leading-relaxed">Implement proper error handling to gracefully handle 429 errors.</span>
+</label>
+<label class="flex items-start gap-3 cursor-pointer">
+<input class="mt-1 h-5 w-5 rounded border-black/30 dark:border-white/30 bg-transparent text-primary focus:ring-primary focus:ring-offset-background-light dark:focus:ring-offset-background-dark" type="checkbox"/>
+<span class="text-black/70 dark:text-white/70 leading-relaxed">Use the <code class="bg-black/10 dark:bg-white/10 px-1 py-0.5 rounded text-sm">X-RateLimit-*</code> headers to monitor your usage and avoid exceeding limits.</span>
+</label>
+<label class="flex items-start gap-3 cursor-pointer">
+<input class="mt-1 h-5 w-5 rounded border-black/30 dark:border-white/30 bg-transparent text-primary focus:ring-primary focus:ring-offset-background-light dark:focus:ring-offset-background-dark" type="checkbox"/>
+<span class="text-black/70 dark:text-white/70 leading-relaxed">Consider implementing a retry mechanism with exponential backoff to handle temporary rate limit errors.</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>
