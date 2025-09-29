@@ -64,18 +64,20 @@ const Endpoints = () => {
 
   return (
     <div className="dark min-h-screen bg-background-dark font-display text-gray-200">
-      <div className="flex min-h-screen">
+      <div className="flex">
         <ApiSidebar />
-        <main className="flex-1 p-6 sm:p-10 overflow-auto">
-          <div className="max-w-4xl mx-auto">
+        <main className="flex-1 lg:ml-0 min-h-screen p-4 sm:p-6 lg:p-8 xl:p-10 overflow-auto">
+          <div className="max-w-4xl mx-auto w-full">
             <ApiHeader 
               title="Endpoints" 
               description="Explore all available API endpoints for the Multi-platform Trend Aggregator."
             />
             
-            {endpoints.map((endpoint, index) => (
-              <EndpointSection key={index} {...endpoint} />
-            ))}
+            <div className="space-y-6 sm:space-y-8 lg:space-y-10">
+              {endpoints.map((endpoint, index) => (
+                <EndpointSection key={index} {...endpoint} />
+              ))}
+            </div>
           </div>
         </main>
       </div>

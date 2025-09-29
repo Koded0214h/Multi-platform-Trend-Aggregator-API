@@ -15,6 +15,7 @@ const Examples = () => {
   ];
 
   const platforms = [
+    'Twitter',
     'Youtube',
     'Google Trends',
     'Reddit'
@@ -116,24 +117,24 @@ const Examples = () => {
 
   return (
     <div className="dark min-h-screen bg-background-dark font-display text-gray-200">
-      <div className="flex min-h-screen">
+      <div className="flex">
         <ApiSidebar />
-        <main className="flex-1 p-6 sm:p-8 overflow-auto">
-          <div className="max-w-4xl mx-auto">
+        <main className="flex-1 lg:ml-0 min-h-screen p-4 sm:p-6 lg:p-8 xl:p-10 overflow-auto">
+          <div className="max-w-4xl mx-auto w-full">
             <ApiHeader 
               title="Examples" 
               description="Test the API directly from your browser with interactive examples."
             />
             
-            <div className="mt-8 sm:mt-12 space-y-6 sm:space-y-8">
+            <div className="mt-6 sm:mt-8 lg:mt-10 xl:mt-12 space-y-4 sm:space-y-6 lg:space-y-8">
               {/* Controls Section */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2" htmlFor="endpoint">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-300 mb-1 sm:mb-2" htmlFor="endpoint">
                     Endpoint
                   </label>
                   <select 
-                    className="w-full appearance-none rounded-lg border border-primary/20 bg-background-dark/50 px-4 py-3 pr-10 text-base text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                    className="w-full appearance-none rounded-lg border border-primary/20 bg-background-dark/50 px-3 sm:px-4 py-2.5 sm:py-3 pr-8 sm:pr-10 text-sm sm:text-base text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                     id="endpoint"
                     name="endpoint"
                     value={selectedEndpoint}
@@ -154,11 +155,11 @@ const Examples = () => {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2" htmlFor="platform">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-300 mb-1 sm:mb-2" htmlFor="platform">
                     Platform
                   </label>
                   <select 
-                    className="w-full appearance-none rounded-lg border border-primary/20 bg-background-dark/50 px-4 py-3 pr-10 text-base text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                    className="w-full appearance-none rounded-lg border border-primary/20 bg-background-dark/50 px-3 sm:px-4 py-2.5 sm:py-3 pr-8 sm:pr-10 text-sm sm:text-base text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                     id="platform"
                     name="platform"
                     value={selectedPlatform}
@@ -182,7 +183,7 @@ const Examples = () => {
               {/* Run Button */}
               <div>
                 <button 
-                  className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-base font-semibold text-white shadow-lg shadow-primary/20 hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-dark transition-all hover:scale-105"
+                  className="inline-flex items-center justify-center rounded-lg bg-primary px-4 sm:px-5 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-white shadow-lg shadow-primary/20 hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-dark transition-all hover:scale-105 active:scale-95"
                   type="button"
                   onClick={handleRunRequest}
                 >
@@ -192,14 +193,14 @@ const Examples = () => {
 
               {/* Response Section */}
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-2xl font-bold text-white">Response</h2>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 mb-3 sm:mb-4">
+                  <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">Response</h2>
                   {response && (
                     <button
-                      className="inline-flex items-center gap-2 rounded-lg bg-primary/20 px-3 py-2 text-sm font-medium text-primary hover:bg-primary/30 transition-colors"
+                      className="inline-flex items-center gap-1.5 sm:gap-2 rounded-lg bg-primary/20 px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-primary hover:bg-primary/30 transition-colors w-fit"
                       onClick={handleCopyResponse}
                     >
-                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                       </svg>
                       Copy Response
@@ -209,20 +210,20 @@ const Examples = () => {
                 
                 <div className="relative">
                   <textarea 
-                    className="w-full rounded-lg border border-primary/20 bg-gray-900 p-4 font-mono text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary resize-none"
+                    className="w-full rounded-lg border border-primary/20 bg-gray-900 p-3 sm:p-4 font-mono text-xs sm:text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary resize-none"
                     placeholder="API response will appear here..."
                     readOnly
-                    rows={12}
+                    rows={10}
                     value={response}
                   />
                   
                   {!response && (
-                    <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="absolute inset-0 flex items-center justify-center p-4">
                       <div className="text-center">
-                        <svg className="mx-auto h-12 w-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="mx-auto h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        <p className="mt-2 text-sm text-gray-400">Select options and click "Run Request" to see the response</p>
+                        <p className="mt-2 text-xs sm:text-sm text-gray-400">Select options and click "Run Request" to see the response</p>
                       </div>
                     </div>
                   )}
@@ -230,13 +231,13 @@ const Examples = () => {
               </div>
 
               {/* Code Examples Section */}
-              <div className="mt-8 pt-8 border-t border-primary/20">
-                <h3 className="text-xl font-bold text-white mb-4">Code Examples</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="mt-6 sm:mt-8 lg:mt-10 pt-6 sm:pt-8 border-t border-primary/20">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4 lg:mb-6">Code Examples</h3>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                   <div>
-                    <h4 className="font-medium text-gray-300 mb-2">JavaScript</h4>
-                    <div className="bg-gray-900 p-4 rounded-lg text-sm overflow-x-auto border border-gray-700">
-                      <pre className="text-gray-200 font-mono">
+                    <h4 className="font-medium text-gray-300 mb-2 text-sm sm:text-base">JavaScript</h4>
+                    <div className="bg-gray-900 p-3 sm:p-4 rounded-lg text-xs sm:text-sm overflow-x-auto border border-gray-700">
+                      <pre className="text-gray-200 font-mono whitespace-pre-wrap break-words">
                         <code>
 {`fetch('https://api.trendaggregator.com/v1/trends', {
   headers: {
@@ -251,9 +252,9 @@ const Examples = () => {
                   </div>
                   
                   <div>
-                    <h4 className="font-medium text-gray-300 mb-2">Python</h4>
-                    <div className="bg-gray-900 p-4 rounded-lg text-sm overflow-x-auto border border-gray-700">
-                      <pre className="text-gray-200 font-mono">
+                    <h4 className="font-medium text-gray-300 mb-2 text-sm sm:text-base">Python</h4>
+                    <div className="bg-gray-900 p-3 sm:p-4 rounded-lg text-xs sm:text-sm overflow-x-auto border border-gray-700">
+                      <pre className="text-gray-200 font-mono whitespace-pre-wrap break-words">
                         <code>
 {`import requests
 
